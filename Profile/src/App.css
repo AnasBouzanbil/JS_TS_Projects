@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+
+.socail {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  top: 80%;
+  right: 67%;
+}
+
+
+
+
+.item a {
+  text-decoration: none;
+  width: 2rem;
+  height: 2rem;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  border: 2px solid #f1f1f1;
+  overflow: hidden;
+}
+
+.item a::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  background: var(--bg-color);
+  z-index: 0;
+  scale: 2 0;
+  transform-origin: bottom;
+  transition: scale 0.5s ease;
+  border-radius: 30%;
+}
+
+.item:hover a::before {
+    scale: 1 1;
+}
+
+.icon {
+  color: hsl(203, 92%, 8%);
+  transition: 0.75s ease;
+  z-index: 5;
+}
+
+.item a:hover .icon {
+  color: #fff;
+  transform: rotate(360deg);
+}
+
+.item:nth-child(1) {
+  --bg-color: linear-gradient(to bottom right, #f9ce34, #ee2a7b, #6228d7);
+}
+.item:nth-child(2) {
+  --bg-color: #0077b5;
+
+}
+.item:nth-child(3) {
+  --bg-color: #181818;
+}
+.item:nth-child(4) {
+  --bg-color: #181818;
+}
+
+.item:nth-child(5) {
+  --bg-color: #e95021;
+}
+
+
+
+
+
+
+@media screen and (min-width: 2560px) {
+  .socail {
+    top : 80%;
+    right: 67%;
+    gap: 2rem;
+    }
+    .item a {
+      width: 5rem;
+      height: 5rem;
+      border: 1px solid #f1f1f1;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .contdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 20%;
+    width: 100vh;
+    height: 100vh;
+    margin-left: 20%;
+  }
+  #welc{
+    font-size: calc(4rem + 1vw);
+  } 
+
+
+}
+
+@media screen and (max-width:425px) {
+  body {
+    background-image: url('abouzanbAvATART.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #welc{
+    display: none;
+  }
+  #welco{
+    font-size: calc(4rem + 1vw);
+    margin-right: 22%;
+    position: absolute;
+    top: 10%;
+    color: aliceblue;
+  }
+  #iam
+  {
+    display: flex;
+    top : 30%;
+    align-items: center;
+    position: absolute;
+    right: 40%;
+    max-width: 100vw;
+    margin-right: 0%;
+    justify-content: center;
+    font-size: calc(2.5rem + 1vw);
+    color: aliceblue;
+  }
+  #divengin
+  {
+    display: flex;
+    top : 3%;
+    width: 80vw;
+    align-items: center;
+    margin-right: 25%;
+    position: relative;
+    font-size: calc(2.1rem + 1vw);
+    color: aliceblue;
+  }
+  #divanas
+  {
+    display: flex;
+    bottom : -1%;
+    width: 80vw;
+    align-items: center;
+    margin-right: 5%;
+    position: relative;
+    font-size: calc(2.1rem + 1vw);
+    color: aliceblue;
+  }
+  #text2 {
+    display: none;
+  }
+  #text1 {
+    display: none;
+  }
+
+  .infome
+  {
+    width : 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 375px) {
+
+  #divengin
+  {
+    display: flex;
+    bottom : 5%;
+    width: 80vw;
+    align-items: center;
+    margin-right: 30%;
+    position: relative;
+    font-size: calc(1.8rem + 1vw);
+  }
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin sp-layout {
+  @media screen and (max-width: 750px) {
+    @content;
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+   background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  overflow: hidden;
+}
+
+@function random_range($min, $max) {
+  $rand: random();
+  $random_range: $min + floor($rand * (($max - $min) + 1));
+  @return $random_range;
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+}
+
+.star {
+  $star-count: 50;
+  --star-color: var(--primary-color);
+  --star-tail-length: 6em;
+  --star-tail-height: 2px;
+  --star-width: calc(var(--star-tail-length) / 6);
+  --fall-duration: 9s;
+  --tail-fade-duration: var(--fall-duration);
+
+  position: absolute;
+  top: var(--top-offset);
+  left: 0;
+  width: var(--star-tail-length);
+  height: var(--star-tail-height);
+  color: var(--star-color);
+  background: linear-gradient(45deg, currentColor, transparent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px currentColor);
+  transform: translate3d(104em, 0, 0);
+  animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+  
+  @include sp-layout {
+   
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+  }
+
+  @for $i from 1 through $star-count {
+    &:nth-child(#{$i}) {
+      --star-tail-length: #{random_range(500em, 750em) / 100};
+      --top-offset: #{random_range(0vh, 10000vh) / 100};
+      --fall-duration: #{random_range(6000, 12000s) / 1000};
+      --fall-delay: #{random_range(0, 10000s) / 1000};
+    }
+  }
+
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: calc(var(--star-width) / -2);
+    width: var(--star-width);
+    height: 100%;
+    background: linear-gradient(45deg, transparent, currentColor, transparent);
+    border-radius: inherit;
+    animation: blink 2s linear infinite;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
+  }
+}
+
+@keyframes tail-fade {
+  0%, 50% {
+    width: var(--star-tail-length);
+    opacity: 1;
+  }
+
+  70%, 80% {
+    width: 0;
+    opacity: 0.4;
+  }
+
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes word {
+  0% {
+    transform: translateY(100%);
+  }
+  15% {
+    transform: translateY(-10%);
+    animation-timing-function: ease-out;
+  }
+
+  20% {
+    transform: translateY(0);
+  }
+
+  40%,
+  100% {
+    transform: translateY(-110%);
+  }
+}
+
+.animate-word {
+  animation: word 7s infinite;
+}
+.animate-word-delay-1 {
+  animation: word 7s infinite;
+  animation-delay: -1.9s;
+}
+.animate-word-delay-2 {
+  animation: word 7s infinite;
+  animation-delay: -3.5s;
+}
+.animate-word-delay-3 {
+  animation: word 7s infinite;
+  animation-delay: -3.5s;
+}
