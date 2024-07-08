@@ -1,0 +1,30 @@
+.button {
+  width: 150px;
+  background: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.button div.overlay {
+  width: 48px;
+  height: calc(100% - 2px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 12px;
+  border-radius: inherit;
+  background: #242424;
+  position: absolute;
+  right: 1px;
+}
+
+.button:is(:hover) div.overlay {
+    width: calc(100% - 2px);
+    transition: width 200ms ease;
+}
+
+.span-text-button:hover {
+  color: #ededed !important;
+}

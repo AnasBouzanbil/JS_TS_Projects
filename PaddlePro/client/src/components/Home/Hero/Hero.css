@@ -1,0 +1,19 @@
+
+
+.text-change-color {
+  color:#7ccbcf;
+  transition: 0.5s;
+  margin-left: 15px;
+}
+
+
+
+.typewriter {
+  animation: typing 3.5s steps(40, end);
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}

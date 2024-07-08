@@ -1,0 +1,529 @@
+.wrapper{
+    margin:0 auto;
+    width:600px;
+    margin-top:150px;
+    height:300px;
+    border-bottom:30px solid #40d7eb;
+    
+  }
+  .clear{
+    clear:both;
+  }
+  .left_wall{
+    float:left;
+    width:30px;
+    height:100px;
+    background:#24a8af;
+    animation:  left_wall_animation 3s infinite;
+    
+  }
+
+  @keyframes left_wall_animation {
+    0% {
+        margin-top:0px;
+    }
+    25%{
+        margin-top:100px
+    }
+    50%{
+        margin-top:167px
+    }
+
+    100%{margin-top:0px}
+    
+  }
+  .right_wall{
+    float:right;
+    width:30px;
+    height:100px;
+    background:#008188;
+    animation: right_wall_animation 3s infinite;
+  }
+
+  @keyframes right_wall_animation {
+    0% {
+        margin-top:170px;
+    }
+    25%{
+        margin-top:60px
+    }
+    50%{
+        margin-top:0px
+    }
+    75%{
+        margin-top:80px;
+    }
+    100%{margin-top:166px}
+    
+    
+  }
+
+  .ball{
+    float:left;
+    width:50px;
+    height:50px;
+    background:#d1fdff;
+    border-radius:50%;
+    margin-top:30px;
+    animation: ball_animation 3s linear infinite;
+  }
+
+  @keyframes ball_animation {
+    0% {
+        margin-top:30px;
+    }
+    25%{
+        margin-left:250px;
+        margin-top:222px
+    }
+    50%{
+        margin-left:490px;
+        margin-top:30px
+    }
+    75%{
+        margin-left:250px;
+        margin-top:222px
+    }
+    100%{
+        margin-left:0px;
+        margin-top:30px
+    }
+    
+  }
+
+
+
+  .PaddlePro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 400px;
+    margin-top: 50px;
+}
+
+.paddle {
+    padding-right: 400px;
+}
+
+.paddle, .pro {
+    font-size: 50px;
+    font-family: Courier, monospace;
+}
+
+.text1 {
+    color: white;
+  
+    animation: text1ani 3s infinite;
+}
+.text2 {
+    color: white;
+    animation: text2ani 3s infinite;
+   
+}
+
+@keyframes text1ani {
+    0% {
+        color : white;
+    }
+    25% {
+        color : rgb(174, 176, 176);
+    }
+    50% {
+        color : rgb(67, 67, 67);
+    }
+    75% {
+       color: #1c1c1c;
+    }
+    100% {
+        color: #181616;
+    }
+    
+}
+
+@keyframes text2ani {
+    0% {
+        color : #141313;
+    }
+    25% {
+        color : #1c1c1c;
+    }
+    50% {
+        color : rgb(67, 67, 67);
+    }
+    75% {
+       color: rgb(176, 174, 174);
+    }
+    100% {
+        color: white;
+    } 
+}
+
+@media screen and (max-width: 1024px) {
+    .PaddlePro {
+        gap: 10px;   
+    }
+    .paddle {
+        padding-right: 200px;
+    }
+    .paddle, .pro {
+        font-size: 30px;
+    }
+    .wrapper {
+        margin:0 auto;
+        width:300px;
+        margin-top: 200px;
+        height: 200px;
+        border-bottom:25px solid #24a8af;
+    }
+    .left_wall {
+      width: 20px;
+      animation-duration: 2s;
+      animation:  Left_Wall_AnimationInMid 2s infinite;
+    }
+    .right_wall {
+      width: 20px;
+      animation-duration: 2s;
+      animation:  Right_Wall_AnimationInMid 2s infinite;
+    }
+    .ball{
+      position: absolute;
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      animation: Ball_AnimationInMid 2s  infinite;
+      animation-duration: 2s;
+    }
+  
+}
+
+
+@media screen and (max-width: 600px) {
+
+  .ball{
+    position: absolute;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    animation: Ball_AnimationInMid 2s  infinite;
+    animation-duration: 2s;
+  }
+    .PaddlePro {
+        gap: 10px;   
+    }
+    .paddle {
+        padding-right: 200px;
+    }
+    .paddle, .pro {
+        font-size: 30px;
+    }
+    .wrapper {
+        margin:0 auto;
+        width:300px;
+        margin-top: 200px;
+        height: 200px;
+        border-bottom:25px solid #2b8a8f;
+    }
+    .left_wall {
+      width: 20px;
+      animation-duration: 2s;
+      animation:  Left_Wall_AnimationInMid 2s infinite;
+    }
+    .right_wall {
+      width: 20px;
+      animation-duration: 2s;
+      animation:  Right_Wall_AnimationInMid 2s infinite;
+    }
+  
+}
+@keyframes Ball_AnimationInMid {
+  0% {
+    margin-top:10px;
+    margin-left: 15px;
+  }
+  25%{
+    margin-left:120px;
+    margin-top:145px;
+  }
+  50%{
+    margin-left:250px;
+    margin-top:50px;
+  }
+  75%{
+    margin-left:150px;
+    margin-top:145px;
+  }
+  100%{
+    margin-left:20px;
+    margin-top:10px
+  }
+
+}
+
+@keyframes Right_Wall_AnimationInMid {
+    0% {
+        margin-top:75px;
+    }
+    25%{
+        margin-top:30px;
+      }
+      50%{
+        margin-top:2px;
+      }
+    100%{margin-top:75px;
+    }
+    
+    
+  }
+
+  @keyframes Left_Wall_AnimationInMid {
+    0% {
+        margin-top:2px;
+        background-color: #79e2e7;
+
+    }
+    25%{
+        margin-top:30px;
+      }
+    50%{
+        margin-top:75px;
+      }
+      
+      100%{margin-top:2px}
+    
+  }
+
+
+  @keyframes text1aniInMid {
+    0% {
+        color : white;
+    }
+    25% {
+        color : rgb(176, 174, 174);
+    }
+    50% {
+        color : rgb(67, 67, 67);
+    }
+    75% {
+       color: #1c1c1c;
+    }
+    100% {
+        color: #181616;
+    }
+  
+}
+
+
+
+
+  @keyframes text1aniInMid {
+    0% {
+        color : white;
+    }
+    25% {
+        color : rgb(176, 174, 174);
+    }
+    50% {
+        color : rgb(67, 67, 67);
+    }
+    75% {
+       color: #1c1c1c;
+    }
+    100% {
+        color: #181616;
+    }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bodY {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+.center {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+.wave {
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(45deg, cyan, #fff);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.text{
+  color: white;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  text-shadow: 0 0 3px #d5c5c5, 0 0 5px #d1d1f1;
+}
+
+.char 
+{
+  display: inline-block;
+  animation: textani 1s infinite;
+  color: white;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  text-shadow: 0 0 3px #d5c5c5, 0 0 5px #d1d1f1;
+  margin: 0 5px;
+}
+
+.char:nth-child(1) {
+  animation-delay: 0.0s;
+}
+.char:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.char:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.char:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.char:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.char:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.char:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.char:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.char:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.char:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+
+
+
+@keyframes textani {
+  0%{
+    transform: scale(0);
+  }
+  50%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .wave {
+    width: 3px;
+    height: 40px;
+    margin: 5px;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .char {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wave {
+    width: 2px;
+    height: 30px;
+    margin: 3px;
+  }
+  .text {
+    font-size: 15px;
+    margin: 0 3px;
+
+  }
+  .char {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .wave {
+    width: 1px;
+    height: 20px;
+  }
+  .text {
+    font-size: 10px;
+    display: none;
+  }
+  .char {
+    font-size: 10px;
+  }
+}

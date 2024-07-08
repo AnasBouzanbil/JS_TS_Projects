@@ -1,0 +1,4 @@
+#notification-menu .MuiMenu-paper {
+    transform: translate(-10px, 15px) !important;
+    overflow: visible !important;
+}

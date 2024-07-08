@@ -1,0 +1,10 @@
+FROM node
+
+RUN groupadd -r myuser && useradd -r -g myuser -d /app -s /sbin/nologin -c "Docker image user" myuser
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build
+RUN chown -R myuser:myuser .
+USER myuser
+CMD ["npm", "start"]

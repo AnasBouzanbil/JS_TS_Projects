@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int             @id @default(autoincrement())
+  real_name         String
+  username          String          @unique
+  bio               String          @default("") @db.VarChar(255)
+  image             String          @default("")
+  onlineStatus      Boolean         @default(false)
+  fusername         String          @unique
+  jwtToken          String          @default("")
+  lastOnline        DateTime        @default(now()) @db.Timestamp(6)
+  direct            DirectUser[]
+  friendshipsB      Friendship[]    @relation("UserBFriendships")
+  friendshipsA      Friendship[]    @relation("UserAFriendships")
+  gamePlayer1       Game[]          @relation("Gameplayer1")
+  gamePlayer2       Game[]          @relation("Gameplayer2")
+  owner             Group[]         @relation("Owners")
+  groupmessages     GroupMessages[] @relation("groupuser")
+  Notif_reciepient  Notifications[] @relation("Notif_reciepient")
+  Notif_sender      Notifications[] @relation("Notif_sender")
+  messageReceipient UserMessage[]   @relation("messageReceipient")
+  messageSender UserMessage[]   @relation("messageSender")
+  admins           Group[]         @relation("GroupAdmins")
+  groups           Group[]         @relation("GroupMembers")
+  reciepients      Invites[]       @relation("invitesReciepients")
+  banned           Group[]         @relation("GroupBanned")
+  muted           Group[]         @relation("GroupMuted")
+  blocked         Blocked[]       @relation("Blocked")
+  BlockedMembers  Blocked[]       @relation("BlockedMembers")
+  level           Decimal         @default(1)
+  tfasecret       String          @default("")
+  tfwactivated    Boolean          @default(false)
+  achievement     String          @default("")
+  lose             Decimal         @default(0) 
+  win              Decimal         @default(0)
+  ftime            Boolean          @default(true)
+  inGame           Boolean          @default(false)
+}
+
+
+model Blocked {
+  id          Int      @id @default(autoincrement())
+  user        User?    @relation("Blocked", fields: [username], references: [username], onDelete: Cascade)
+  username    String
+  members     User[]   @relation("BlockedMembers")
+}
+
+
+model Friendship {
+  id       Int    @id @default(autoincrement())
+  status   String @default("pending")
+  reciever String
+  sender   String
+  userB    User   @relation("UserBFriendships", fields: [reciever], references: [username], onDelete: Cascade)
+  userA    User   @relation("UserAFriendships", fields: [sender], references: [username], onDelete: Cascade)
+}
+
+model Notifications {
+  id                 Int      @id @default(autoincrement())
+  content            String
+  reciepientUsername String
+  senderUsername     String
+  created_on         DateTime @default(now()) @db.Timestamp(6)
+  type               String
+  seen               Boolean  @default(false)
+  reciepient         User     @relation("Notif_reciepient", fields: [reciepientUsername], references: [username], onDelete: Cascade)
+  sender             User     @relation("Notif_sender", fields: [senderUsername], references: [username])
+}
+
+model Group {
+  id       Int             @id @default(autoincrement())
+  name     String          @unique
+  passcode String
+  type     String          @default("Public")
+  userId   Int
+  desc     String          @default("")
+  image    String          @default("")
+  owner    User            @relation("Owners", fields: [userId], references: [id], onDelete: Cascade)
+  messages GroupMessages[]
+  invites  Invites[]
+  admins   User[]          @relation("GroupAdmins")
+  banned   User[]          @relation("GroupBanned")
+  members  User[]          @relation("GroupMembers")
+  muted    User[]          @relation("GroupMuted")
+}
+
+model GroupMessages {
+  id          Int      @id @default(autoincrement())
+  sender_name String
+  content     String
+  created_on  DateTime @default(now())
+  groupId     Int
+  Group       Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  sender      User     @relation("groupuser", fields: [sender_name], references: [username], onDelete: Cascade)
+}
+
+model Direct {
+  id       Int           @id @default(autoincrement())
+  members  DirectUser[]  @relation("members")
+  messages UserMessage[]
+  blocked  DirectUser[]  @relation("blocked")
+}
+
+model DirectUser {
+  id       Int      @id @default(autoincrement())
+  username String
+  directId Int
+  direct   Direct   @relation("members", fields: [directId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [username], references: [username])
+  blocked  Direct[] @relation("blocked")
+}
+
+model UserMessage {
+  id              Int      @id @default(autoincrement())
+  sender_name     String
+  content         String
+  created_on      DateTime @default(now())
+  directId        Int
+  seen            Boolean  @default(false)
+  reciepient_name String
+  Direct          Direct   @relation(fields: [directId], references: [id], onDelete: Cascade)
+  reciepient      User     @relation("messageReceipient", fields: [reciepient_name], references: [username], onDelete: Cascade)
+  sender          User     @relation("messageSender", fields: [sender_name], references: [username], onDelete: Cascade)
+}
+
+model Invites {
+  id          Int    @id @default(autoincrement())
+  groupid     Int
+  group       Group  @relation(fields: [groupid], references: [id], onDelete: Cascade)
+  reciepients User[] @relation("invitesReciepients")
+}
+
+model Game {
+  id              String @id @default(uuid())
+  playerOScore    Int
+  playerOUsername String
+  playerTScore    Int
+  playerTUsername String
+  PlayerOImage    String @default("")
+  PlayerTImage    String @default("")
+  Token           String @default("")
+  playerO         User   @relation("Gameplayer1", fields: [playerOUsername], references: [username], onDelete: Cascade)
+  playerT         User   @relation("Gameplayer2", fields: [playerTUsername], references: [username], onDelete: Cascade)
+  created_on      DateTime @default(now())
+}

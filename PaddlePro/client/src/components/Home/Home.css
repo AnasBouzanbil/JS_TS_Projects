@@ -1,0 +1,72 @@
+/**Typeo CSS Start (Note if is not need so remove)**/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+* {
+ box-sizing: border-box;
+}
+
+body {
+ font-family: "Poppins", sans-serif;
+ box-sizing: border-box;
+}
+
+/*
+  Settings css 
+*/
+
+.cw-section {
+ display: flex;
+ flex-direction: column;
+ max-width: 800px !important;
+ margin: auto;
+ width: 100%;
+ row-gap: 2rem;
+ padding: 40px 0px;
+}
+
+.cw-accordion__item {
+ padding: 0.8rem 1rem;
+ box-shadow: 0 4px 10px #ede9fe;
+ border: #cdcdcd 1px solid;
+}
+
+.cw-accordion__item .cw-acordion-cont {
+ max-height: 0px;
+ overflow: hidden;
+ transition: max-height 0.7s;
+ font-size: 15px;
+ margin:0 28px;
+ font-weight: 500;
+}
+
+.cw-accordion__item .cw-open + .cw-acordion-cont {
+  max-height: 1000px;
+}
+
+.cw-accordion__item .cw-acordion-cont ul {
+ padding-left: 20px;
+}
+
+.cw-accordion__item .cw-acordion-cont ul li {
+ margin: 7px 0px;
+}
+
+.faq-contact {
+ text-align: center;
+ padding: 10px 0;
+}
+
+.contact-btn {
+ padding: 8px 20px;
+ background-color: #000;
+ color: #fff;
+ display: inline-block;
+ transition: 0.5s all;
+ border: #000 1px solid;
+ cursor: pointer;
+}
+
+.contact-btn:hover {
+ background-color: transparent;
+ color: #000;
+}
